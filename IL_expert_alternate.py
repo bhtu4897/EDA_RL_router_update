@@ -151,7 +151,7 @@ class Astar:
 
 # 專家類別
 class Expert:
-    def __init__(self, num=5, map_size = 20):
+    def __init__(self, num, map_size):
         self.num = num
         self.policy = [] # 行動策略
         self.map_size = map_size
@@ -210,11 +210,11 @@ class Expert:
 
 
 # 生成隨機座標點
-def generate_coordinates(size=20, n=5):
-    if n > size * size:  # 最多只能有400個不重複的座標點
-        raise ValueError("Cannot generate more than 400 unique coordinates in a 20x20 grid.")
+def generate_coordinates(size, n):
+    if n > size * size:  # 最多只能有size * size個不重複的座標點
+        raise ValueError("Cannot generate more than size * size unique coordinates in a size * size grid.")
 
-    all_coordinates = [(x, y) for x in range(20) for y in range(20)]
+    all_coordinates = [(x, y) for x in range(size) for y in range(size)]
     sample_data = random.sample(all_coordinates, n * 2)
     return sample_data[:n], sample_data[n:]
 
