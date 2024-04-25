@@ -13,10 +13,10 @@ if __name__ == "__main__":
 
     map_size = int(input("Enter the size of the map: "))
     num_agents = int(input("Enter the number of agents: ")) # 環境中的智能體數量
-    expert = Expert() # 實例化專家類
+    expert = Expert(num_agents,map_size) # 實例化專家類
 
     # 生成環境的起始和終止位置
-    start_pos, end_pos = generate_coordinates() # 生成隨機座標點
+    start_pos, end_pos = generate_coordinates(map_size,num_agents) # 生成隨機座標點
     env = RoutingEnv(start_pos, end_pos) # 創建環境對象
     max_step = env.wsize ** 2 # 每個回合的最大步數（基於環境大小）
 
@@ -51,10 +51,10 @@ if __name__ == "__main__":
     # ----------------------------------------- #
 
     # 生成每個回合的起始和終止位置，並確保沒有捷徑
-    start_pos, end_pos = generate_coordinates()
+    start_pos, end_pos = generate_coordinates(map_size,num_agents)
     start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos)
     while shorts:
-        start_pos, end_pos = generate_coordinates()
+        start_pos, end_pos = generate_coordinates(map_size,num_agents)
         start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos)
 
     print(start_pos, end_pos)
@@ -62,10 +62,10 @@ if __name__ == "__main__":
     # 迭代各個回合
     for i in range(num_episodes):
         # 生成當前回合的起始和終止位置
-        start_pos, end_pos = generate_coordinates()
+        start_pos, end_pos = generate_coordinates(map_size,num_agents)
         start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos)
         while shorts:
-            start_pos, end_pos = generate_coordinates()
+            start_pos, end_pos = generate_coordinates(map_size,num_agents)
             start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos)
 
         # 重置當前回合的環境
