@@ -10,8 +10,10 @@ from PPO_structure import PPO # 導入PPO類
 
 
 if __name__ == "__main__":
+
+    map_size = int(input("Enter the size of the map: "))
+    num_agents = int(input("Enter the number of agents: ")) # 環境中的智能體數量
     expert = Expert() # 實例化專家類
-    num_agents = 5 # 環境中的智能體數量
 
     # 生成環境的起始和終止位置
     start_pos, end_pos = generate_coordinates() # 生成隨機座標點
