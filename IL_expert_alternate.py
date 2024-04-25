@@ -158,9 +158,9 @@ class Expert:
 
     # 指示方法
     def instruct(self, starts, goals):
-        mdict = {(-1, 0):0, (0, 1):1, (1, 0):2, (0, -1):3}
+        mdict = {(-1, 0):0, (0, 1):1, (1, 0):2, (0, -1):3} #將位移轉換為數字表示方向
         self.policy = []
-        obstacles = set()
+        obstacles = set() 
         obstacles.update(starts + goals)
         start_pos, end_pos = BBox(starts,goals).Run() # 使用範圍類別計算覆蓋區域
         Agents = [Astar(self.map_size, start_pos[i], end_pos[i]) for i in range(self.num)]
