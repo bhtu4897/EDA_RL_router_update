@@ -50,7 +50,7 @@ if __name__ == "__main__":
     i = 0
     while not done:
         start_pos, end_pos = generate_coordinates()
-        start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos) # 獲取專家指導
+        start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos) # 獲取專家instruct
         while shorts:
             start_pos, end_pos = generate_coordinates()
             start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos) # 確保沒有"shorts"
