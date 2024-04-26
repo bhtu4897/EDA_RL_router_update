@@ -11,8 +11,9 @@ from PPO_structure import PPO  # 導入PPO算法的實現
 
 
 if __name__ == "__main__":
-    expert = Expert() # 創建專家對象
-    num_agents = 5  # 智能體的數量
+    map_size = int(input("Enter the size of the map: "))
+    num_agents = int(input("Enter the number of agents: ")) # 環境中的智能體數量
+    expert = Expert(num_agents,map_size) # 實例化專家類
 
     start_pos, end_pos = generate_coordinates()  # 生成起點和終點坐標
     env = RoutingEnv(start_pos, end_pos)  # 創建環境對象
