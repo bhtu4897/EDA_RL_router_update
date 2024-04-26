@@ -72,7 +72,7 @@ if __name__ == "__main__":
 
         print('Episode', i, 'Total_reward:', episode_return, ', Done: ', done)
         if done:
-            RoutePainter(20, state.paths)  # 繪製路徑
+            RoutePainter(map_size, state.paths)  # 繪製路徑
         i += 1
 
 
