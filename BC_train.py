@@ -11,7 +11,7 @@ from PPO_structure import PPO # 導入PPO類
 
 if __name__ == "__main__":
 
-    map_size = int(input("Enter the size of the map: "))
+    map_size = int(input("Enter the size of the map: ")) # 地圖大小  (輸入時 map_size<=20  num_agents<=5)
     num_agents = int(input("Enter the number of agents: ")) # 環境中的智能體數量
     expert = Expert(num_agents,map_size) # 實例化專家類
 
