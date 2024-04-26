@@ -12,8 +12,9 @@ from PPO_structure import PPO  # 匯入PPO結構
 
 
 if __name__ == "__main__":
-    expert = Expert()  # 初始化專家
-    num_agents = 5  # 智能體數量
+    map_size = int(input("Enter the size of the map: "))
+    num_agents = int(input("Enter the number of agents: ")) # 環境中的智能體數量
+    expert = Expert(num_agents,map_size) # 實例化專家類
 
     # 生成起始和終點座標
     start_pos, end_pos = generate_coordinates()
