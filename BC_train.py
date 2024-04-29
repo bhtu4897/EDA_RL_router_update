@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # 訓練--回合更新 on_policy
     # ----------------------------------------- #
 
-    # 生成每個回合的起始和終止位置，並確保沒有捷徑
+    # 生成每個回合的起始和終止位置，並確保沒有short
     start_pos, end_pos = generate_coordinates(map_size,num_agents)
     start_pos, end_pos, shorts = expert.instruct(start_pos, end_pos)
     while shorts:
