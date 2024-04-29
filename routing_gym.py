@@ -9,7 +9,7 @@ from copy import deepcopy
 
 # 狀態類別
 class State(object):
-    def __init__(self, starts, goals, wsize=20):
+    def __init__(self, starts, goals, wsize):
         self.agents = deepcopy(starts)  # 深度複製起點位置
         self.goals = deepcopy(goals)  # 深度複製目標位置
         self.paths = [[pt] for pt in starts]  # 路徑列表，初始為起點位置
@@ -114,7 +114,7 @@ class State(object):
                 # print(j,agent_pos[1])
                 relative_x = i - agent_pos[0] + central_map_size // 2
                 relative_y = j - agent_pos[1] + central_map_size // 2
-                if 0 <= i < 20 and 0 <= j < 20 and gmap[i,j] == 1:
+                if 0 <= i < self.wsize and 0 <= j < self.wsize and gmap[i,j] == 1:
                     central_map[relative_x, relative_y] = 1
         # print("current_pos", agent_pos)
         # print(gmap)
@@ -174,8 +174,8 @@ class State(object):
 
 # 路徑規劃環境
 class RoutingEnv(gym.Env):
-    def __init__(self, starts, goals, wsize=20):
-        self.wsize = 20
+    def __init__(self, starts, goals, wsize):
+        self.wsize = wsize
         self.state = State(starts, goals, wsize)
         self.num_agents = self.state.num_agents
         self.action_space = spaces.Tuple([spaces.Discrete(self.num_agents), spaces.Discrete(5)])
